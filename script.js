@@ -1,9 +1,11 @@
+const scoreBoard = document.getElementById('score');
 const rgbColor = document.getElementById('rgb-color');
 const listaDeCores = document.getElementById('lista-de-cores');
 const answer = document.getElementById('answer');
 const resetButton = document.getElementById('reset-game');
 
 let color;
+let score = 0;
 let end = false;
 
 function getRandomRgb() {
@@ -14,12 +16,18 @@ function getRandomPosition() {
   return Math.floor(Math.random() * 6);
 }
 
+function changeScore(points) {
+  score += points;
+  scoreBoard.innerHTML = score;
+}
+
 function endGame(event) {
   if(end === true)
     return;
 
   if(event.target.style.backgroundColor === color) {
     answer.innerHTML = 'Acertou!';
+    changeScore(3);
   } else {
     answer.innerHTML = 'Errou! Tente novamente!';
   }
