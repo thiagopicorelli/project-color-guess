@@ -8,10 +8,14 @@ function getRandomRgb() {
   return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 }
 
-function createNewColor() {
+function getRandomPosition() {
+  return Math.floor(Math.random() * 6);
+}
+
+function createNewColor(color) {
   const newColor = document.createElement('div');
   newColor.className = 'ball';
-  newColor.style.backgroundColor = getRandomRgb();
+  newColor.style.backgroundColor = color;
   listaDeCores.appendChild(newColor);
 }
 
@@ -20,8 +24,14 @@ function startGame() {
   rgbColor.innerHTML = color.replace('rgb','');
   answer.innerHTML = 'Escolha uma cor';
 
+  const resultPos = getRandomPosition();
+
   for(let i = 0; i < 6; i += 1) {
-    createNewColor();
+    if(i === resultPos) {
+      createNewColor(color);
+    } else {
+      createNewColor(getRandomRgb());
+    }
   }
 }
 
