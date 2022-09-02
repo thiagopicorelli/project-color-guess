@@ -9,7 +9,9 @@ let score = 0;
 let end = false;
 
 function getRandomRgb() {
-  return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+  return `rgb(${Math.floor(Math.random() * 256)}, 
+          ${Math.floor(Math.random() * 256)}, 
+          ${Math.floor(Math.random() * 256)})`;
 }
 
 function getRandomPosition() {
@@ -22,10 +24,11 @@ function changeScore(points) {
 }
 
 function endGame(event) {
-  if(end === true)
+  if (end === true) {
     return;
+  }
 
-  if(event.target.style.backgroundColor === color) {
+  if (event.target.style.backgroundColor === color) {
     answer.innerHTML = 'Acertou!';
     changeScore(3);
   } else {
@@ -34,10 +37,10 @@ function endGame(event) {
   end = true;
 }
 
-function createNewColor(color) {
+function createNewColor(ballColor) {
   const newColor = document.createElement('div');
   newColor.className = 'ball';
-  newColor.style.backgroundColor = color;
+  newColor.style.backgroundColor = ballColor;
   newColor.addEventListener('click', endGame);
   listaDeCores.appendChild(newColor);
 }
@@ -46,15 +49,15 @@ function startGame() {
   end = false;
 
   color = getRandomRgb();
-  rgbColor.innerHTML = color.replace('rgb','');
+  rgbColor.innerHTML = color.replace('rgb', '');
   answer.innerHTML = 'Escolha uma cor';
 
   listaDeCores.innerHTML = '';
 
   const resultPos = getRandomPosition();
 
-  for(let i = 0; i < 6; i += 1) {
-    if(i === resultPos) {
+  for (let i = 0; i < 6; i += 1) {
+    if (i === resultPos) {
       createNewColor(color);
     } else {
       createNewColor(getRandomRgb());
