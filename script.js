@@ -49,6 +49,7 @@ function startGame() {
   end = false;
 
   color = getRandomRgb();
+  document.body.style.backgroundColor = getRandomRgb();
   rgbColor.innerHTML = color.replace('rgb', '');
   answer.innerHTML = 'Escolha uma cor';
 
