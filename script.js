@@ -9,8 +9,8 @@ let score = 0;
 let end = false;
 
 function getRandomRgb() {
-  const primeiraParte = `rgb(${Math.floor(Math.random() * 256)}`;
-  return `${primeiraParte}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+  const primeiraParte = `rgb(${Math.floor(Math.random() * 256)},`;
+  return `${primeiraParte} ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 }
 
 function getRandomPosition() {
