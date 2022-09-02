@@ -1,6 +1,7 @@
 const rgbColor = document.getElementById('rgb-color');
 const listaDeCores = document.getElementById('lista-de-cores');
 const answer = document.getElementById('answer');
+const resetButton = document.getElementById('reset-game');
 
 let color;
 let end = false;
@@ -34,9 +35,13 @@ function createNewColor(color) {
 }
 
 function startGame() {
+  end = false;
+
   color = getRandomRgb();
   rgbColor.innerHTML = color.replace('rgb','');
   answer.innerHTML = 'Escolha uma cor';
+
+  listaDeCores.innerHTML = '';
 
   const resultPos = getRandomPosition();
 
@@ -50,3 +55,5 @@ function startGame() {
 }
 
 startGame();
+
+resetButton.addEventListener('click', startGame);
