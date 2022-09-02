@@ -9,9 +9,8 @@ let score = 0;
 let end = false;
 
 function getRandomRgb() {
-  return `rgb(${Math.floor(Math.random() * 256)}, 
-          ${Math.floor(Math.random() * 256)}, 
-          ${Math.floor(Math.random() * 256)})`;
+  const primeiraParte = `rgb(${Math.floor(Math.random() * 256)}`;
+  return `${primeiraParte}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
 }
 
 function getRandomPosition() {
@@ -27,6 +26,9 @@ function endGame(event) {
   if (end === true) {
     return;
   }
+
+  console.log(event.target.style.backgroundColor);
+  console.log(color);
 
   if (event.target.style.backgroundColor === color) {
     answer.innerHTML = 'Acertou!';
